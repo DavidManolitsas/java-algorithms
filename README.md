@@ -21,7 +21,7 @@ Format code using [google-java-format](https://github.com/sherter/google-java-fo
 
 To format the code, run the following command:
 ```bash
-./gradlew goJF
+gradle goJF
 ```
 
 ## Build
@@ -29,7 +29,15 @@ To format the code, run the following command:
 To build the project execute the following command:
 
 ```bash
-./gradlew build
+gradle build
+```
+
+## Test
+
+To test the project execute the following command:
+
+```bash
+gradle test
 ```
 
 ## Run

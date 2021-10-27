@@ -36,7 +36,8 @@ public class MergeSort extends SortAlgorithm {
       tempRight[j] = input[mid + 1 + j];
     }
 
-    int i = 0, j = 0;
+    int i = 0;
+    int j = 0;
     int k = left;
 
     while (i < n1 && j < n2) {

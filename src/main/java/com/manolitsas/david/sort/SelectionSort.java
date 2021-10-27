@@ -1,8 +1,6 @@
 package com.manolitsas.david.sort;
 
-/**
- * Selection sort.
- */
+/** Selection sort. */
 public class SelectionSort extends SortAlgorithm {
 
   @Override

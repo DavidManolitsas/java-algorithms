@@ -1,10 +1,6 @@
 package com.manolitsas.david.search;
 
-import java.util.Arrays;
-
-/**
- * Binary search algorithm.
- */
+/** Binary search algorithm. */
 public class BinarySearch extends SearchAlgorithm {
 
   @Override
@@ -12,23 +8,20 @@ public class BinarySearch extends SearchAlgorithm {
     int first = 0;
     int last = input.length - 1;
 
-    // binary search only works on elements sorted in ascending order
-    Arrays.sort(input);
-
     return binarySearch(input, first, last, target);
   }
 
-  private int binarySearch(int[] input, int first, int last, int target) {
-    int mid = (first + last) / 2;
-    while (first <= last) {
+  private int binarySearch(int[] input, int left, int right, int target) {
+    int mid = (left + right) / 2;
+    while (left <= right) {
       if (input[mid] < target) {
-        first = mid + 1;
+        left = mid + 1;
       } else if (input[mid] == target) {
         return input[mid];
       } else {
-        last = mid - 1;
+        right = mid - 1;
       }
-      mid = (first + last) / 2;
+      mid = (left + right) / 2;
     }
 
     return -1;

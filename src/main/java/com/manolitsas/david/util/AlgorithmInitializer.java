@@ -21,10 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 
-
-/**
- * Initialise the algorithm and input values.
- */
+/** Initialise the algorithm and input values. */
 @Slf4j
 public class AlgorithmInitializer {
 

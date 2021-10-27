@@ -10,9 +10,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-/**
- * Main class.
- */
+/** Main class. */
 @Slf4j
 @Command(name = "java-algorithms", description = "demonstrate various java algorithms")
 public class App implements Callable<Integer> {
@@ -33,21 +31,23 @@ public class App implements Callable<Integer> {
   @Parameters(index = "1", description = "Algorithm to run")
   private String algorithm;
 
+  @Parameters(index = "2", description = "Log results")
+  private boolean isVisualised;
+
   @Override
   public Integer call() throws IOException {
 
     AlgorithmRunner<?> runner =
         AlgorithmInitializer.initAlgorithm(type, algorithm, inputFilePath, target);
 
-    log.info("Running {} {} on {}", algorithm, type, inputFilePath);
-    long startTime = System.nanoTime();
+    log.info("Starting {} {} on '{}'", algorithm, type, inputFilePath);
     var result = runner.run();
-    long endTime = System.nanoTime();
 
-    // log results
-    var time = ((double) (endTime - startTime)) / Math.pow(10, 9);
-    log.info("{}", result);
-    log.info("Time taken: {} seconds", String.format("%.6f", time));
+    // log sorted results
+    if (isVisualised && result instanceof int[]) {
+      log.info("{}", result);
+    }
+
     return 0;
   }
 

@@ -1,8 +1,6 @@
 package com.manolitsas.david.sort;
 
-/**
- * Insertion sort.
- */
+/** Insertion sort. */
 public class InsertionSort extends SortAlgorithm {
 
   @Override

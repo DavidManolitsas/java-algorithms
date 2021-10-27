@@ -1,8 +1,6 @@
 package com.manolitsas.david.search;
 
-/**
- * Linear search.
- */
+/** Linear search. */
 public class LinearSearch extends SearchAlgorithm {
 
   @Override

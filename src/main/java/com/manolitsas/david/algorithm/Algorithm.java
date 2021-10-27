@@ -1,2 +1,4 @@
-package com.manolitsas.david.algorithms;public class Algorithms {
+package com.manolitsas.david.algorithm;
+
+public abstract class Algorithm {
 }

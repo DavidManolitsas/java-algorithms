@@ -1,24 +1,17 @@
-package com.manolitsas.david.util;
+package com.manolitsas.david.util.runner;
 
 import com.manolitsas.david.search.SearchAlgorithm;
+import lombok.RequiredArgsConstructor;
 
-public class SearchAlgorithmRunner {
+@RequiredArgsConstructor
+public class SearchAlgorithmRunner extends AlgorithmRunner<Integer> {
 
     private final SearchAlgorithm algorithm;
     private final int[] input;
     private final int target;
 
-    public SearchAlgorithmRunner(SearchAlgorithm algorithm, int[] input, int target) {
-        this.algorithm = algorithm;
-        this.input = input;
-        this.target = target;
-    }
-
-
-    public int run() {
+    @Override
+    public Integer run() {
         return algorithm.execute(input, target);
     }
-
-
-
 }

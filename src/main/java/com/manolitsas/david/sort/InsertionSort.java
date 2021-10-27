@@ -21,4 +21,5 @@ public class InsertionSort extends SortAlgorithm {
 
         return input;
     }
+
 }

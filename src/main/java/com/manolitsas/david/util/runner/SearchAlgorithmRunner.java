@@ -14,4 +14,5 @@ public class SearchAlgorithmRunner extends AlgorithmRunner<Integer> {
     public Integer run() {
         return algorithm.execute(input, target);
     }
+
 }

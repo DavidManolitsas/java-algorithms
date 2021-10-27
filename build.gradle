@@ -51,6 +51,7 @@ test {
                 'skipped'
         ]
     }
+    useJUnitPlatform()
 }
 
 

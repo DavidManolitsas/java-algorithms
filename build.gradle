@@ -43,5 +43,15 @@ compileJava {
 }
 
 test {
+    testLogging {
+        exceptionFormat = 'full'
+        events = [
+                'passed',
+                'failed',
+                'skipped'
+        ]
+    }
     useJUnitPlatform()
 }
+
+

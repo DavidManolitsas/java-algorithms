@@ -37,7 +37,7 @@ For more informaiton see the examples below for both sort and search algorithms
 ### Sort Algorithm
 
 ```bash
-gradle run --args="sort bubble -i input/50-input.txt"
+gradle run --args="sort bubble -f input/50-input.txt"
 ```
 
 ### Search Algorithm
@@ -45,5 +45,5 @@ gradle run --args="sort bubble -i input/50-input.txt"
 To find a valid target choose a value from a the relevant file in [input](input)
 
 ```bash
-gradle run --args="search linear -i input/50-input.txt -t 23"
+gradle run --args="search linear -f input/50-input.txt -t 23"
 ```

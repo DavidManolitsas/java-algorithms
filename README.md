@@ -15,6 +15,15 @@ The algorithms used in this project include:
 * Linear Search
 * Binary Search
 
+## Format code
+
+Format code using [google-java-format](https://github.com/sherter/google-java-format-gradle-plugin) plugin.
+
+To format the code, run the following command:
+```bash
+./gradlew goJF
+```
+
 ## Build
 
 To build the project execute the following command:
@@ -22,7 +31,6 @@ To build the project execute the following command:
 ```bash
 ./gradlew build
 ```
-
 
 ## Run
 
@@ -42,8 +50,8 @@ gradle run --args="sort bubble -f input/50-input.txt"
 
 ### Search Algorithm
 
-To find a valid target choose a value from a the relevant file in [input](input)
-
 ```bash
 gradle run --args="search linear -f input/50-input.txt -t 23"
 ```
+
+To find a valid target choose a value from a the relevant file in [input](input)

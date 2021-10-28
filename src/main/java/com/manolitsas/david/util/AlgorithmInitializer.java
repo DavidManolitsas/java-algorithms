@@ -36,25 +36,23 @@ public class AlgorithmInitializer {
    * @throws IOException thrown if input file is not found
    */
   public static AlgorithmRunner<?> initAlgorithm(
-      String type, String algorithm, String filePath, int target) throws IOException {
-    try {
-      int[] input = initInput(filePath);
+      String type, String algorithm, String filePath, int target)
+      throws IOException, InvalidParameterException {
+    int[] input = initInput(filePath);
 
-      switch (type) {
-        case "sort":
-          return new SortAlgorithmRunner(initSortAlgorithm(algorithm), input);
-        case "search":
-          return new SearchAlgorithmRunner(initSearchAlgorithm(algorithm), input, target);
-        default:
-          System.err.println("Invalid algorithm type");
-          throw new InvalidParameterException();
-      }
-    } catch (IOException e) {
-      throw new IOException();
+    switch (type) {
+      case "sort":
+        return new SortAlgorithmRunner(initSortAlgorithm(algorithm), input);
+      case "search":
+        return new SearchAlgorithmRunner(initSearchAlgorithm(algorithm), input, target);
+      default:
+        log.error("Invalid algorithm type [type={}]", type);
+        throw new InvalidParameterException();
     }
   }
 
-  private static SortAlgorithm initSortAlgorithm(String algorithm) {
+  private static SortAlgorithm initSortAlgorithm(String algorithm)
+      throws InvalidParameterException {
 
     switch (algorithm) {
       case "bubble":
@@ -70,12 +68,13 @@ public class AlgorithmInitializer {
       case "shell":
         return new ShellSort();
       default:
-        System.err.println("Invalid algorithm");
-        return null;
+        log.error("Invalid algorithm [algorithm={}]", algorithm);
+        throw new InvalidParameterException();
     }
   }
 
-  private static SearchAlgorithm initSearchAlgorithm(String algorithm) {
+  private static SearchAlgorithm initSearchAlgorithm(String algorithm)
+      throws InvalidParameterException {
 
     switch (algorithm) {
       case "linear":
@@ -83,8 +82,8 @@ public class AlgorithmInitializer {
       case "binary":
         return new BinarySearch();
       default:
-        System.err.println("Invalid algorithm");
-        return null;
+        log.error("Invalid algorithm [algorithm={}]", algorithm);
+        throw new InvalidParameterException();
     }
   }
 
@@ -103,6 +102,7 @@ public class AlgorithmInitializer {
 
       return input;
     } catch (IOException e) {
+      log.error("No file found [file={}]", filePath);
       throw new IOException();
     }
   }

@@ -3,6 +3,7 @@ package com.manolitsas.david;
 import com.manolitsas.david.util.AlgorithmInitializer;
 import com.manolitsas.david.util.runner.AlgorithmRunner;
 import java.io.IOException;
+import java.security.InvalidParameterException;
 import java.util.concurrent.Callable;
 import lombok.extern.slf4j.Slf4j;
 import picocli.CommandLine;
@@ -35,20 +36,25 @@ public class App implements Callable<Integer> {
   private boolean isVisualised;
 
   @Override
-  public Integer call() throws IOException {
+  public Integer call() {
+    try {
+      AlgorithmRunner<?> runner =
+          AlgorithmInitializer.initAlgorithm(type, algorithm, inputFilePath, target);
 
-    AlgorithmRunner<?> runner =
-        AlgorithmInitializer.initAlgorithm(type, algorithm, inputFilePath, target);
+      log.info("Starting {} {} on '{}'", algorithm, type, inputFilePath);
+      var result = runner.run();
 
-    log.info("Starting {} {} on '{}'", algorithm, type, inputFilePath);
-    var result = runner.run();
+      // log sorted results
+      if (isVisualised && result instanceof int[]) {
+        log.info("{}", result);
+      }
 
-    // log sorted results
-    if (isVisualised && result instanceof int[]) {
-      log.info("{}", result);
+      return 0;
+
+    } catch (IOException | InvalidParameterException e) {
+      log.error("Invalid parameters, refer to README.md for how to run");
+      return 1;
     }
-
-    return 0;
   }
 
   public static void main(String[] args) {

@@ -1,6 +1,6 @@
 # Java Algorithms
 
-This project demonstrates how to implement various sort and search algorithms using Java.
+A command line java program that demonstrates various sort and search algorithms to compare time complexity.
 The algorithms used in this project include:
 
 ### Sort
